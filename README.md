@@ -44,6 +44,12 @@ The private key is assumed to be an RSA key with PEM format by default, but this
 ansible_controller_ssh_key_type: openssh
 ```
 
+To change the default key permissions (`0600`):
+
+```yaml
+ansible_controller_ssh_key_mode: <permissions>
+```
+
 When installing the key a suitable header and footer comment will be added using the specified key format (one of `openssh` or the default `rsa`) and the key will be split over 64 characters per line. If the named key already exists the role will take no action.
 
 To remove a previously installed key:
