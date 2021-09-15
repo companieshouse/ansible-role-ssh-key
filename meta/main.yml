@@ -1,0 +1,15 @@
+dependencies: []
+
+galaxy_info:
+  author: Companies House
+  description: Retrieve and install an SSH private key from Hashicorp Vault onto an Ansible controller host
+  license: MIT
+  min_ansible_version: 2.9.10
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+  galaxy_tags:
+    - private-key
+    - ansible-controller

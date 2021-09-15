@@ -1,0 +1,16 @@
+---
+
+- set_fact:
+    ssh_dir_prefix: "{{ '/home' if ansible_controller_user != 'root' }}"
+
+- set_fact:
+    ssh_dir_path: "{{ ssh_dir_prefix }}/{{ ansible_controller_user }}/.ssh"
+
+- set_fact:
+    ssh_key_path: "{{ ssh_dir_path }}/{{ ansible_controller_ssh_key_name }}"
+
+- include_tasks: create.yml
+  when: ansible_controller_ssh_key_install
+
+- include_tasks: remove.yml
+  when: not ansible_controller_ssh_key_install
