@@ -22,7 +22,7 @@
 
 - name: Write SSH private key to Ansible controller
   copy:
-    content: "{{ ssh_key_matter }}"
+    content: "{{ ssh_key_matter | b64decode }}"
     dest: "{{ ssh_key_path }}"
     owner: "{{ ansible_controller_ssh_dir_owner}}"
     group: "{{ ansible_controller_ssh_dir_group }}"
