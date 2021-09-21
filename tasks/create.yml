@@ -9,12 +9,7 @@
 
 - name: Retrieve SSH private key from Hashicorp Vault
   set_fact:
-    vault_value: "{{ lookup('community.hashi_vault.hashi_vault', hashicorp_vault_private_key_path)  }}"
-
-- name: Prepare key data for writing to disk
-  set_fact:
-    key_format: "{{ 'RSA' if ansible_controller_ssh_key_type == 'rsa' else 'OPENSSH' }}"
-    key_matter: "{{ ( vault_value['ssh_private_key'] | regex_replace('(.{1,64})', '\\1|')).split('|') | list }}"
+    ssh_key_matter: "{{ lookup('community.hashi_vault.hashi_vault', hashicorp_vault_private_key_path)  }}"
 
 - name: Ensure SSH directory exists
   file:
@@ -26,8 +21,8 @@
   when: ansible_controller_ssh_dir_check
 
 - name: Write SSH private key to Ansible controller
-  template:
-    src: templates/id_rsa.j2
+  copy:
+    content: "{{ ssh_key_matter }}"
     dest: "{{ ssh_key_path }}"
     owner: "{{ ansible_controller_ssh_dir_owner}}"
     group: "{{ ansible_controller_ssh_dir_group }}"
