@@ -15,7 +15,7 @@ An [Ansible Galaxy](https://galaxy.ansible.com/) role for retrieving and install
 
 ## Role Variables
 
-The role defaults (see `defaults/main.yml`) assume that the key is being installed for the `root` user with the key name `id_rsa`, and the directory `/home/root/.ssh` will be created with suitable permissions if it doesn't already exist.
+The role defaults (see `defaults/main.yml`) assume that the key is being installed for the `root` user with key name `id_rsa`, and the directory `/home/root/.ssh` will be created with suitable permissions if it doesn't already exist.
 
 To skip the creation of this directory:
 
@@ -36,6 +36,7 @@ ssh_dir_owner: <user-name>
 ssh_dir_group: <group-name>
 ssh_dir_mode: <permissions>
 ```
+The value of `ssh_dir_owner` (default `root`) is used to determine the path to the `.ssh` directory. For example, for `root` this will be `/root/.ssh` and for any non-root value this will be `/home/{{ ssh_dir_owner }}/.ssh`.
 
 To specify a name other than the default `id_rsa` for the key being installed:
 
