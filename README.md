@@ -20,34 +20,33 @@ The role defaults (see `defaults/main.yml`) assume that the key is being install
 To skip the creation of this directory:
 
 ```yaml
-ansible_controller_ssh_dir_check: no
+ssh_dir_check: no
 ```
 
-To specify a different user or different ownership or permissions for the `.ssh` directory use one or more of the following:
+To specify different ownership or permissions for the `.ssh` directory or key use one or more of the following:
 
 ```yaml
-ansible_controller_user: <user-name>
-ansible_controller_ssh_dir_owner: <user-name>
-ansible_controller_ssh_dir_group: <group-name>
-ansible_controller_ssh_dir_mode: <permissions>
+# Key options
+ssh_key_owner: <user-name>
+ssh_key_group: <group-name>
+ssh_key_mode: <permissions>
+
+# .ssh directory options
+ssh_dir_owner: <user-name>
+ssh_dir_group: <group-name>
+ssh_dir_mode: <permissions>
 ```
 
 To specify a name other than the default `id_rsa` for the key being installed:
 
 ```yaml
-ansible_controller_ssh_key_name: <key-name>
-```
-
-To change the default key permissions (`0600`):
-
-```yaml
-ansible_controller_ssh_key_mode: <permissions>
+ssh_key_name: <key-name>
 ```
 
 To remove a previously installed key:
 
 ```yaml
-ansible_controller_ssh_key_install: no
+ssh_key_install: no
 ```
 
 ## Example Requirements File
@@ -76,7 +75,7 @@ Specify `localhost` in your playbook to target the Ansible _controller_:
     - ssh-key
   vars:
     hashicorp_vault_private_key_path: /applications/my-application-config
-    ansible_controller_ssh_key_name: my-app-key
+    ssh_key_name: my-app-key
 ```
 
 ## License

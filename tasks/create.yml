@@ -14,16 +14,16 @@
 - name: Ensure SSH directory exists
   file:
     path: "{{ ssh_dir_path }}"
-    owner: "{{ ansible_controller_ssh_dir_owner}}"
-    group: "{{ ansible_controller_ssh_dir_group }}"
+    owner: "{{ ssh_dir_owner}}"
+    group: "{{ ssh_dir_group }}"
     state: directory
-    mode: '{{ ansible_controller_ssh_dir_mode }}'
-  when: ansible_controller_ssh_dir_check
+    mode: '{{ ssh_dir_mode }}'
+  when: ssh_dir_check
 
 - name: Write SSH private key to Ansible controller
   copy:
     content: "{{ ssh_key_json['ssh_private_key'] | b64decode }}"
     dest: "{{ ssh_key_path }}"
-    owner: "{{ ansible_controller_ssh_dir_owner}}"
-    group: "{{ ansible_controller_ssh_dir_group }}"
-    mode: '{{ ansible_controller_ssh_key_mode }}'
+    owner: "{{ ssh_key_owner  }}"
+    group: "{{ ssh_key_group }}"
+    mode: '{{ ssh_key_mode }}'

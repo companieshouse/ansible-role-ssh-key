@@ -2,5 +2,5 @@
 
 - name: Remove key
   file:
-    path: "{{ ssh_dir_path }}/{{ ansible_controller_ssh_key_name }}"
+    path: "{{ ssh_dir_path }}/{{ ssh_key_name }}"
     state: absent

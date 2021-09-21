@@ -1,10 +1,12 @@
 ---
 
-ansible_controller_user: root
-ansible_controller_ssh_dir_check: yes
-ansible_controller_ssh_dir_owner: root
-ansible_controller_ssh_dir_group: root
-ansible_controller_ssh_dir_mode: 0700
-ansible_controller_ssh_key_mode: 0600
-ansible_controller_ssh_key_name: id_rsa
-ansible_controller_ssh_key_install: yes
+ssh_key_install: yes
+ssh_key_mode: 0600
+ssh_key_name: id_rsa
+ssh_key_owner: root
+ssh_key_group: root
+
+ssh_dir_check: yes
+ssh_dir_group: root
+ssh_dir_mode: 0700
+ssh_dir_owner: root
