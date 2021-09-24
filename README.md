@@ -47,7 +47,7 @@ ssh_key_name: <key-name>
 To remove a previously installed key:
 
 ```yaml
-ssh_key_install: no
+ssh_key_action: remove
 ```
 
 ## Example Requirements File

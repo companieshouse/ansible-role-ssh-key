@@ -1,6 +1,7 @@
 ---
 
-ssh_key_install: yes
+ssh_key_action: install
+
 ssh_key_mode: 0600
 ssh_key_name: id_rsa
 ssh_key_owner: root
