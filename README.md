@@ -5,7 +5,8 @@ An [Ansible Galaxy](https://galaxy.ansible.com/) role for retrieving and install
 ## Requirements
 
 * This role depends on the [community.hashi_vault](https://galaxy.ansible.com/community/hashi_vault?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW) collection which must be installed before the role can be used
-* The private key should be stored as a base-64 encoded string to ensure that formatting and line breaks are preserved
+  * The [hvac](https://pypi.org/project/hvac/) Python module is required as a dependency of the `community.hashi_vault` Ansible module
+* The private key should be stored as a base-64 encoded string in a key named `ssh_private_key` at the Vault path specified by the variable `hashicorp_vault_private_key_path`:
 
 ```json
 {
