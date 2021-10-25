@@ -3,7 +3,7 @@
 - name: Check for valid mode of operation
   assert:
     that:
-      - ssh_key_action != "install" and ssh_key_action != "remove"
+      - ssh_key_action == "install" or ssh_key_action == "remove"
     msg: "Unsupported value provided for 'ssh_key_action'; specify either 'install' or 'remove'"
 
 - set_fact:
