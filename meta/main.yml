@@ -1,6 +1,7 @@
 dependencies: []
 
 galaxy_info:
+  role_name: ssh-key
   author: Companies House
   description: Retrieve and install an SSH private key from Hashicorp Vault onto an Ansible controller host
   license: MIT
